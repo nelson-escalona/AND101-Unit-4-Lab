@@ -16,10 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val redButton get() = binding.redButton as Button
+    private val redButton get() = binding.redButton
     private val blueButton get() = binding.blueButton
     private val tinyYellowButton get() = binding.tinyYellowButton
-    private val superSecretView get() = binding.SUPERSECRETPOWERLEVELVIEW
     private val sharedPref: SharedPreferences by lazy {
         getPreferences(MODE_PRIVATE)
     }
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         blueButton.setOnClickListener { blueButtonClicked() }
         tinyYellowButton.setOnClickListener { tinyButtonClicked() }
         tinyYellowButton.setOnLongClickListener { tinyButtonLongClicked() }
-        superSecretView.setOnClickListener { unclickableButton() }
     }
 
     /**
@@ -102,17 +100,7 @@ class MainActivity : AppCompatActivity() {
      * Something is preventing me from clicking...
      * Maybe I should check out [R.layout.activity_main] to look for anything suspicious.
      */
-    private fun unclickableButton() {
-        superSecretCounter += 1
-        // Show a clue after three (3) taps
-        if (superSecretCounter > 3) {
-            Toasty.warning(
-                this,
-                getString(R.string.toast_unclickable_warning),
-                Toasty.LENGTH_LONG
-            ).show()
-        }
-    }
+
 
     /**
      * Congratulations!!!
